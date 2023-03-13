@@ -2,7 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const db = require("./db")
-const app = require("express");
+const app = express();
+const productRouter = require("./routes/productRouter");
 
 var corsOptions = {
     origin: "http://localhost:5173"
@@ -22,3 +23,5 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () =>{
     console.log("server up and running!")
 })
+
+app.use('/api/', productRouter)
